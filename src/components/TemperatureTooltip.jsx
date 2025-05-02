@@ -44,9 +44,9 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
         // Calculate angle in degrees
         // atan2 returns angle in radians, convert to degrees
         // Adjust the formula to correctly map to clock positions
-        const rotationOffset = -85 + startHour * 30;
+        const rotationOffset = -90 - (startHour % 12) * 30;
         const angle = ((Math.atan2(center.y - mouseY, center.x - mouseX) * 180) / Math.PI + rotationOffset + 360) % 360;
-
+        console.log({ rotationOffset, angle });
         const index = Math.floor(angle / 30);
 
         if (index >= 0 && index < forecast.length) {
