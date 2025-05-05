@@ -32,6 +32,9 @@ const MainLayout = () => {
         } = await res.json();
         setLocation(location);
         setWeatherData({ current, forecast });
+        const favicon = document.querySelector("link[rel~='icon']");
+        favicon.type = 'image/png';
+        favicon.href = 'https:' + current.condition.icon;
       } catch (error) {
         setErr(error.message);
       }
