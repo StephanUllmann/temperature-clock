@@ -37,11 +37,7 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
       const innerBound = Math.min(center.x, center.y) * 0.9;
       const outerBound = Math.min(center.x, center.y);
 
-      // Check if mouse is within the ring
       if (distanceFromCenter > innerBound && distanceFromCenter < outerBound) {
-        // Calculate angle in degrees
-        // atan2 returns angle in radians, convert to degrees
-        // Adjust the formula to correctly map to clock positions
         const rotationOffset = -90 - (startHour % 12) * 30;
         const angle = ((Math.atan2(center.y - mouseY, center.x - mouseX) * 180) / Math.PI + rotationOffset + 360) % 360;
 
@@ -55,7 +51,7 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
           });
         }
       } else {
-        // setTooltip(null);
+        setTooltip(null);
       }
     },
     [startHour, forecast]
@@ -70,11 +66,11 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
     if (!overlay) return;
 
     overlay.addEventListener('mousemove', handleMouseMove);
-    // overlay.addEventListener('mouseleave', handleMouseLeave);
+    overlay.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       overlay.removeEventListener('mousemove', handleMouseMove);
-      // overlay.removeEventListener('mouseleave', handleMouseLeave);
+      overlay.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [handleMouseMove, handleMouseLeave]);
 

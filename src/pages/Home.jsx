@@ -17,7 +17,7 @@ const Home = () => {
 
   if (!weatherData) return null;
   const { temp_c, wind_degree, wind_kph, condition } = weatherData.current;
-  console.log(weatherData.current);
+
   const hour = new Date().getHours();
   const startHour = hour < 2 ? 0 : hour - 2;
   const gradientStart = (startHour % 12) * 30;
