@@ -4,26 +4,6 @@ import { useRef, useState, useEffect } from 'react';
 import TemperatureTooltip from '../components/TemperatureTooltip.jsx';
 import { getTemperatureColor } from '../utils/utils.js';
 
-// const windCompassRose = {
-//   N: '0deg',
-//   NNE: '22.5deg',
-//   NE: '45deg',
-//   ENE: '67.5deg',
-//   E: '90deg',
-//   ESE: '112.5deg',
-//   SE: '135deg',
-//   SSE: '157.5deg',
-//   S: '180deg',
-//   SSW: '202.5deg',
-//   SW: '225deg',
-//   WSE: '247.5deg',
-//   W: '270deg',
-//   WNW: '292.5deg',
-//   NW: '315deg',
-//   NNW: '337.5deg',
-// };
-// bg-radial from-slate-900 from-65% to-67% to-transparent
-
 const Home = () => {
   const intervalRef = useRef(null);
   const [, setTrigger] = useState(false);
