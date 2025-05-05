@@ -42,6 +42,7 @@ const Home = () => {
   const startHour = hour < 2 ? 0 : hour - 2;
   const gradientStart = (startHour % 12) * 30;
   const forecast = [...weatherData.forecast.forecastday[0].hour, ...weatherData.forecast.forecastday[1].hour];
+
   return (
     <div className='h-full min-w-lg grid place-content-center block-container '>
       <div

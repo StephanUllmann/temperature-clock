@@ -30,12 +30,10 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
 
-      // Calculate distance from center
       const dx = mouseX - center.x;
       const dy = mouseY - center.y;
       const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
 
-      // Define ring boundaries as percentage of the radius
       const innerBound = Math.min(center.x, center.y) * 0.9;
       const outerBound = Math.min(center.x, center.y);
 
@@ -46,15 +44,14 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
         // Adjust the formula to correctly map to clock positions
         const rotationOffset = -90 - (startHour % 12) * 30;
         const angle = ((Math.atan2(center.y - mouseY, center.x - mouseX) * 180) / Math.PI + rotationOffset + 360) % 360;
-        console.log({ rotationOffset, angle });
-        const index = Math.floor(angle / 30);
 
-        if (index >= 0 && index < forecast.length) {
+        const index = Math.floor(angle / 30);
+        if (index >= -6 && index < forecast.length) {
           setTooltip({
             x: mouseX,
             y: mouseY,
             index,
-            data: forecast[index],
+            data: forecast.at(index),
           });
         }
       } else {
