@@ -55,7 +55,7 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
           });
         }
       } else {
-        setTooltip(null);
+        // setTooltip(null);
       }
     },
     [startHour, forecast]
@@ -70,16 +70,16 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
     if (!overlay) return;
 
     overlay.addEventListener('mousemove', handleMouseMove);
-    overlay.addEventListener('mouseleave', handleMouseLeave);
+    // overlay.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       overlay.removeEventListener('mousemove', handleMouseMove);
-      overlay.removeEventListener('mouseleave', handleMouseLeave);
+      // overlay.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [handleMouseMove, handleMouseLeave]);
 
   return (
-    <div ref={overlayRef} className='absolute inset-0 z-20 isolate' role='tooltip' aria-live='polite'>
+    <div ref={overlayRef} className='absolute inset-0 z-50 isolate' role='tooltip' aria-live='polite'>
       {tooltip && (
         <>
           <div
@@ -90,7 +90,7 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
             }}
           ></div>
           <div
-            className='text-sm font-black border-2 rounded bg-slate-900 w-fit px-1 py-0.5 text-nowrap z-40 tooltip'
+            className='text-sm font-black border-2 rounded bg-slate-900 backdrop-blur-3xl  w-fit px-1 py-0.5 text-nowrap tooltip'
             style={{
               filter: `drop-shadow(0px 0px 5px ${getTemperatureColor(tooltip.data.temp_c)})`,
             }}

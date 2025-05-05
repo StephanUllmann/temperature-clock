@@ -25,28 +25,11 @@ const Home = () => {
 
   return (
     <div className='h-full min-w-lg grid place-content-center block-container '>
-      <div
-        className='border-0 aspect-square  w-[100cqmin] rounded-full mx-auto col-end-1 row-end-1 relative'
-        style={{
-          backgroundImage: `conic-gradient(from ${gradientStart}deg in oklch, ${forecast
-            .slice(startHour, startHour + 12)
-            .map((h) => getTemperatureColor(h.temp_c))
-            .join(',')})`,
-          filter: `drop-shadow(0px 0px 10px ${getTemperatureColor(temp_c)})`,
-        }}
-      >
-        <TemperatureTooltip startHour={startHour} forecast={forecast.slice(startHour, startHour + 12)} />
-        <div className='border-0 aspect-square my-auto bg-center rounded-full overflow-clip grid place-content-center backdrop-blur-2xl  clock-container '>
-          <img src={condition.icon} alt='' className='col-end-1 row-end-1' />
-          <Clock baseColor={getTemperatureColor(temp_c)} />
-        </div>
-      </div>
       {/* Wind */}
       <div className='col-end-1 row-end-1 place-self-center w-1 h-1 relative'>
         <div
           className='absolute right-0 w-1 h-[55cqmin] origin-bottom bottom-0'
           style={{
-            // rotate: windCompassRose[wind_dir],
             rotate: wind_degree + 'deg',
             filter: `drop-shadow(0px 0px 10px ${getTemperatureColor(wind_kph)}) blur(0.5px)`,
           }}
@@ -70,6 +53,22 @@ const Home = () => {
               </g>
             </g>
           </svg>
+        </div>
+      </div>
+      <div
+        className='border-0 aspect-square w-[100cqmin] rounded-full mx-auto col-end-1 row-end-1 relative'
+        style={{
+          backgroundImage: `conic-gradient(from ${gradientStart}deg in oklch, ${forecast
+            .slice(startHour, startHour + 12)
+            .map((h) => getTemperatureColor(h.temp_c))
+            .join(',')})`,
+          filter: `drop-shadow(0px 0px 10px ${getTemperatureColor(temp_c)})`,
+        }}
+      >
+        <TemperatureTooltip startHour={startHour} forecast={forecast.slice(startHour, startHour + 12)} />
+        <div className='border-0 aspect-square my-auto bg-center rounded-full overflow-clip grid place-content-center backdrop-blur-2xl  clock-container '>
+          <img src={condition.icon} alt='' className='col-end-1 row-end-1' />
+          <Clock baseColor={getTemperatureColor(temp_c)} />
         </div>
       </div>
     </div>
