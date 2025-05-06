@@ -67,7 +67,7 @@ const Home = () => {
       >
         <TemperatureTooltip startHour={startHour} forecast={forecast.slice(startHour, startHour + 12)} />
         <div className='border-0 aspect-square my-auto bg-center rounded-full overflow-clip grid place-content-center backdrop-blur-2xl  clock-container '>
-          <img src={condition.icon} alt='' className='col-end-1 row-end-1' />
+          <img src={condition.icon} alt={condition.text || ''} className='col-end-1 row-end-1' />
           <Clock baseColor={getTemperatureColor(temp_c)} />
         </div>
       </div>
