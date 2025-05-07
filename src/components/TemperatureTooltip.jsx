@@ -42,7 +42,7 @@ const TemperatureTooltip = ({ startHour, forecast }) => {
         const angle = ((Math.atan2(center.y - mouseY, center.x - mouseX) * 180) / Math.PI + rotationOffset + 360) % 360;
 
         const index = Math.floor(angle / 30);
-        if (index >= -6 && index < forecast.length) {
+        if (index >= -12 && index < forecast.length) {
           setTooltip({
             x: mouseX,
             y: mouseY,
